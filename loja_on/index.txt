@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidaVerde Moçambique</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>VidaVerde Moçambique</h1>
+  <p>Produtos Naturais e Sustentáveis</p>
+</header>
+
+<section class="produtos">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=800" alt="Produto">
+
+    <h2>Sabonete Orgânico</h2>
+
+    <p>
+      Sabonete natural produzido com ingredientes ecológicos.
+    </p>
+
+    <h3>350 MT</h3>
+
+    <button onclick="abrirPagamento('Sabonete Orgânico',350)">
+      Comprar
+    </button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=800" alt="Produto">
+
+    <h2>Óleo Essencial</h2>
+
+    <p>
+      Produto natural para relaxamento e aromaterapia.
+    </p>
+
+    <h3>500 MT</h3>
+
+    <button onclick="abrirPagamento('Óleo Essencial',500)">
+      Comprar
+    </button>
+  </div>
+
+</section>
+
+<!-- MODAL DE PAGAMENTO -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-content">
+
+    <span class="fechar" onclick="fecharModal()">&times;</span>
+
+    <h2>Pagamento</h2>
+
+    <form action="pagamento.php" method="POST">
+
+      <input type="hidden" name="produto" id="produto">
+
+      <input type="hidden" name="preco" id="preco">
+
+      <label>Nome Completo</label>
+      <input type="text" name="nome" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Método de Pagamento</label>
+
+      <select name="metodo" required>
+        <option value="">Escolha</option>
+        <option>PayPal</option>
+        <option>M-Pesa</option>
+        <option>Cartão Bancário</option>
+      </select>
+
+      <button type="submit">
+        Confirmar Pagamento
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+
+function abrirPagamento(produto, preco){
+
+  document.getElementById('modal').style.display = 'flex';
+
+  document.getElementById('produto').value = produto;
+
+  document.getElementById('preco').value = preco;
+}
+
+function fecharModal(){
+  document.getElementById('modal').style.display = 'none';
+}
+
+</script>
+
+</body>
+</html>
